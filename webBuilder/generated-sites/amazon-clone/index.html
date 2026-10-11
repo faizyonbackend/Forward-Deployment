@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amazon Clone - Shop electronics, fashion, home & more">
+    <title>Amazon Clone - Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar" role="banner">
+        <div class="top-bar-left">
+            <a href="#" class="logo" aria-label="Amazon Clone Home">
+                <svg class="logo-icon" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="28" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="#FF9900">Amazon</text>
+                    <path d="M58 28 L70 16" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M70 16 L85 30" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-tag">.clone</span>
+            </a>
+            <button class="location-btn" aria-label="Delivery location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>
+                    <span class="location-text">Deliver to</span>
+                    <span class="location-place">India</span>
+                </span>
+            </button>
+        </div>
+
+        <div class="search-container" role="search">
+            <select class="search-category" aria-label="Search category">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="computers">Computers</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home & Kitchen</option>
+                <option value="books">Books</option>
+                <option value="beauty">Beauty & Personal Care</option>
+                <option value="sports">Sports & Outdoors</option>
+                <option value="toys">Toys & Games</option>
+            </select>
+            <input type="search" class="search-input" placeholder="Search Amazon.in" aria-label="Search products" autocomplete="off">
+            <button class="search-btn" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="search-suggestions" aria-live="polite"></div>
+        </div>
+
+        <div class="top-bar-right">
+            <div class="nav-item language" role="button" tabindex="0" aria-label="Language settings">
+                <i class="fas fa-globe"></i>
+                <span>EN</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            
+            <div class="nav-item account" role="button" tabindex="0" aria-label="Account & Lists" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-line-one">Hello, Sign in</span>
+                <span class="nav-line-two">Account & Lists <i class="fas fa-chevron-down"></i></span>
+                <div class="dropdown-menu account-dropdown" role="menu">
+                    <div class="dropdown-header">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Sign in to your account</span>
+                    </div>
+                    <button class="dropdown-btn primary" role="menuitem">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    <button class="dropdown-btn secondary" role="menuitem">
+                        <i class="fas fa-user-plus"></i> New Customer? Start Here
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-link" role="menuitem"><i class="fas fa-box"></i> Your Orders</a>
+                    <a href="#" class="dropdown-link" role="menuitem"><i class="fas fa-heart"></i> Your Wish List</a>
+                    <a href="#" class="dropdown-link" role="menuitem"><i class="fas fa-gift"></i> Gift Cards</a>
+                    <a href="#" class="dropdown-link" role="menuitem"><i class="fas fa-truck"></i> Your Prime</a>
+                </div>
+            </div>
+
+            <div class="nav-item returns" role="button" tabindex="0" aria-label="Returns & Orders">
+                <span class="nav-line-one">Returns</span>
+                <span class="nav-line-two">& Orders</span>
+            </div>
+
+            <div class="nav-item cart" role="button" tabindex="0" aria-label="Shopping Cart" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-text">Cart</span>
+                <span class="cart-count" aria-label="Items in cart">0</span>
+                <div class="dropdown-menu cart-dropdown" role="menu">
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                        <button class="btn btn-primary continue-shopping">Continue Shopping</button>
+                    </div>
+                    <div class="cart-items" style="display: none;"></div>
+                    <div class="cart-footer" style="display: none;">
+                        <div class="cart-subtotal">Subtotal: <span class="subtotal-amount">₹0.00</span></div>
+                        <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-label="All Categories" aria-expanded="false" aria-controls="nav-menu">
+            <i class="fas fa-bars"></i>
+            <span>All</span>
+        </button>
+        <ul class="nav-menu" id="nav-menu" role="menubar">
+            <li role="none"><a href="#" class="nav-link active" role="menuitem">Today's Deals</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Customer Service</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Registry</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Gift Cards</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Sell</a></li>
+            <li role="none"><a href="#" class="nav-link prime" role="menuitem"><i class="fab fa-amazon"></i> Prime</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Electronics</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Computers</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Smart Home</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Fashion</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Toys & Games</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Home & Kitchen</a></li>
+            <li role="none"><a href="#" class="nav-link" role="menuitem">Beauty</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Category Drawer -->
+    <aside class="category-drawer" id="categoryDrawer" role="dialog" aria-label="Categories" aria-hidden="true">
+        <div class="drawer-header">
+            <h2>Shop by Category</h2>
+            <button class="drawer-close" aria-label="Close categories"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="#" class="drawer-category">📱 Electronics</a></li>
+                <li><a href="#" class="drawer-category">💻 Computers & Accessories</a></li>
+                <li><a href="#" class="drawer-category">🏠 Home & Kitchen</a></li>
+                <li><a href="#" class="drawer-category">👗 Fashion</a></li>
+                <li><a href="#" class="drawer-category">📚 Books & Audible</a></li>
+                <li><a href="#" class="drawer-category">💄 Beauty & Personal Care</a></li>
+                <li><a href="#" class="drawer-category">🏃 Sports & Outdoors</a></li>
+                <li><a href="#" class="drawer-category">🧸 Toys & Games</a></li>
+                <li><a href="#" class="drawer-category">🐾 Pet Supplies</a></li>
+                <li><a href="#" class="drawer-category">🚗 Automotive</a></li>
+                <li><a href="#" class="drawer-category">🛠️ Tools & Home Improvement</a></li>
+                <li><a href="#" class="drawer-category">🎮 Video Games</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <h1 id="hero-title" class="visually-hidden">Amazon Clone - Great Deals Every Day</h1>
+            <div class="hero-slider" role="region" aria-label="Featured deals carousel">
+                <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&q=80')">
+                    <div class="slide-content">
+                        <h2>Up to 70% off Electronics</h2>
+                        <p>Smartphones, laptops, headphones & more</p>
+                        <a href="#" class="btn btn-large btn-primary">Shop Now</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80')">
+                    <div class="slide-content">
+                        <h2>Fashion Sale - Up to 80% Off</h2>
+                        <p>Trending styles for men, women & kids</p>
+                        <a href="#" class="btn btn-large btn-primary">Explore Fashion</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920&q=80')">
+                    <div class="slide-content">
+                        <h2>Home & Kitchen Essentials</h2>
+                        <p>Starting at ₹99 | Free delivery on Prime</p>
+                        <a href="#" class="btn btn-large btn-primary">Shop Home</a>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots" role="tablist" aria-label="Slide indicators"></div>
+                    <button class="slider-btn next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="categories-section" aria-labelledby="categories-title">
+        <h2 id="categories-title" class="section-title">Shop by Category</h2>
+        <div class="categories-grid" role="list">
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&q=80" alt="Electronics" loading="lazy">
+                <h3>Electronics</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=200&q=80" alt="Fashion" loading="lazy">
+                <h3>Fashion</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&q=80" alt="Home & Kitchen" loading="lazy">
+                <h3>Home & Kitchen</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=200&q=80" alt="Books" loading="lazy">
+                <h3>Books</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&q=80" alt="Beauty" loading="lazy">
+                <h3>Beauty</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=200&q=80" alt="Sports" loading="lazy">
+                <h3>Sports</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Toys" loading="lazy">
+                <h3>Toys & Games</h3>
+            </article>
+            <article class="category-card" role="listitem">
+                <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=200&q=80" alt="Groceries" loading="lazy">
+                <h3>Grocery</h3>
+            </article>
+        </div>
+    </section>
+
+    <!-- Deal of the Day -->
+    <section class="deal-section" aria-labelledby="deal-title">
+        <div class="section-header">
+            <h2 id="deal-title" class="section-title">Deal of the Day</h2>
+            <div class="deal-timer" aria-live="polite" aria-label="Time remaining">
+                <span>Ends in </span>
+                <span class="timer" id="dealTimer">23:45:12</span>
+            </div>
+        </div>
+        <div class="deal-content">
+            <div class="deal-main">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80" alt="Sony WH-1000XM5 Wireless Headphones" loading="lazy">
+                <div class="deal-info">
+                    <span class="deal-badge">Limited Time Deal</span>
+                    <h3>Sony WH-1000XM5 Wireless Noise Canceling Headphones</h3>
+                    <div class="deal-rating">
+                        <div class="stars" aria-label="4.5 out of 5 stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="review-count">(12,843)</span>
+                    </div>
+                    <div class="deal-price">
+                        <span class="current-price">₹24,990</span>
+                        <span class="original-price">₹34,990</span>
+                        <span class="discount">29% off</span>
+                    </div>
+                    <div class="deal-claim">
+                        <div class="claim-bar">
+                            <div class="claim-progress" style="width: 67%"></div>
+                        </div>
+                        <span>67% claimed</span>
+                    </div>
+                    <button class="btn btn-large btn-primary add-to-cart-btn" data-product-id="1">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <p class="prime-note"><i class="fab fa-amazon"></i> FREE Delivery by Tomorrow</p>
+                </div>
+            </div>
+            <div class="deal-sidebar">
+                <div class="lightning-deals">
+                    <h4><i class="fas fa-bolt"></i> Upcoming Lightning Deals</h4>
+                    <div class="lightning-deal">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=150&q=80" alt="Apple Watch" loading="lazy">
+                        <div>
+                            <p class="deal-time">Upcoming in 2h</p>
+                            <p class="deal-product">Apple Watch Series 9</p>
+                            <p class="deal-price-preview">From ₹41,900</p>
+                        </div>
+                    </div>
+                    <div class="lightning-deal">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150&q=80" alt="MacBook" loading="lazy">
+                        <div>
+                            <p class="deal-time">Upcoming in 4h</p>
+                            <p class="deal-product">MacBook Air M2</p>
+                            <p class="deal-price-preview">From ₹99,900</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Sections -->
+    <section class="products-section" aria-labelledby="electronics-title">
+        <div class="section-header">
+            <h2 id="electronics-title" class="section-title">Top Picks in Electronics</h2>
+            <a href="#" class="see-all">See all <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="products-grid" id="electronicsGrid" role="list"></div>
+    </section>
+
+    <section class="products-section" aria-labelledby="fashion-title">
+        <div class="section-header">
+            <h2 id="fashion-title" class="section-title">Trending in Fashion</h2>
+            <a href="#" class="see-all">See all <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="products-grid" id="fashionGrid" role="list"></div>
+    </section>
+
+    <section class="products-section" aria-labelledby="home-title">
+        <div class="section-header">
+            <h2 id="home-title" class="section-title">Home & Kitchen Essentials</h2>
+            <a href="#" class="see-all">See all <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="products-grid" id="homeGrid" role="list"></div>
+    </section>
+
+    <!-- Best Sellers Carousel -->
+    <section class="bestsellers-section" aria-labelledby="bestsellers-title">
+        <div class="section-header">
+            <h2 id="bestsellers-title" class="section-title">Best Sellers</h2>
+        </div>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" aria-label="Previous products"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-track" id="bestsellersTrack" role="list"></div>
+            <button class="carousel-btn next" aria-label="Next products"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-top">
+            <button class="footer-back-top" aria-label="Back to top">
+                <i class="fas fa-chevron-up"></i>
+                Back to top
+            </button>
+        </div>
+        <div class="footer-middle">
+            <div class="footer-column">
+                <h4>Get to Know Us</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="#">Amazon Science</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect with Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Make Money with Us</h4>
+                <ul>
+                    <li><a href="#">Sell on Amazon</a></li>
+                    <li><a href="#">Sell under Amazon Accelerator</a></li>
+                    <li><a href="#">Protect and Build Your Brand</a></li>
+                    <li><a href="#">Amazon Global Selling</a></li>
+                    <li><a href="#">Become an Affiliate</a></li>
+                    <li><a href="#">Fulfilment by Amazon</a></li>
+                    <li><a href="#">Advertise Your Products</a></li>
+                    <li><a href="#">Amazon Pay on Merchants</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Let Us Help You</h4>
+                <ul>
+                    <li><a href="#">COVID-19 and Amazon</a></li>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Returns Centre</a></li>
+                    <li><a href="#">100% Purchase Protection</a></li>
+                    <li><a href="#">Amazon App Download</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                <svg viewBox="0 0 120 40" fill="none">
+                    <text x="0" y="28" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="#FF9900">Amazon</text>
+                    <path d="M58 28 L70 16" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M70 16 L85 30" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="footer-links">
+                <a href="#">Conditions of Use</a>
+                <a href="#">Privacy Notice</a>
+                <a href="#">Interest-Based Ads</a>
+            </div>
+            <p class="copyright">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close quick view"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
